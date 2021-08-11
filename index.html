@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.min.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="movies">
+      <div class="container">
+        <h2 class="movies-heading">IMovie</h2>
+        <form class="movies__form">
+          <label class="movies__form__label">
+            Search
+            <input
+              class="movies__form__input"
+              type="search"
+              placeholder="Search..."
+            />
+          </label>
+
+          <label class="movies__form__label">
+            Search by genres
+            <select class="movies__form__select" name="movies__genres">
+              <option value="All">All</option>
+            </select>
+          </label>
+
+          <label class="movies__form__label">
+            Filter
+            <select
+              class="movies__form__select sort-films"
+              name="movies__genres"
+            >
+              <option value="a_z">A-Z</option>
+              <option value="z_a">Z-A</option>
+              <option value="old_new">old-new</option>
+              <option value="new_old">new-old</option>
+            </select>
+          </label>
+
+          <button class="movies__form__btn" type="submit">Search</button>
+        </form>
+
+        <ul class="movies__list"></ul>
+      </div>
+    </section>
+
+    <!-- modal -->
+    <div class="modal" data-modal-origin="1">
+      <ul class="modal__list">
+        <li class="modal__item">
+          <img
+            class="modal__img"
+            src="https://via.placeholder.com/150x200"
+            alt="image about the movie"
+            width="150"
+            height="200"
+          />
+
+          <h3 class="modal__heading">Avengers</h3>
+          <p class="modal__paragraph-description">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime,
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam
+            maxime expedita ea saepe magnam amet quisquam harum quasi incidunt
+            illum! eos!
+          </p>
+
+          <time class="modal__time" datetime="2021-10-10">2021-07-21</time>
+
+          <ul class="modal__genres-list">
+            <li class="modal__genres-item">Action</li>
+            <li class="modal__genres-item">Comedy</li>
+          </ul>
+
+          <button class="modal__close-btn">Close</button>
+        </li>
+      </ul>
+    </div>
+    <!-- Template -->
+    <template class="movie__template">
+      <li class="movies__item">
+        <img
+          class="movies__img"
+          src="https://via.placeholder.com/150x200"
+          alt="image about the movie"
+          width="150"
+          height="200"
+        />
+
+        <h3 class="movies__heading">Avengers</h3>
+
+        <button class="movies__more-btn">More</button>
+      </li>
+    </template>
+    <script src="./js/utils.js"></script>
+    <script src="./js/films.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
