@@ -25,6 +25,9 @@ const elMoviesInput = selectElement(".movies__form__input", elForm);
 const elSelectGenres = selectElement(".movies__form__select", elForm);
 const elSelectSort = selectElement(".sort-films", elForm);
 
+const elNextBtn = selectElement(".next-btn", elForm);
+const elPreBtn = selectElement(".pre-btn", elForm);
+
 // form submit
 elForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
@@ -32,13 +35,20 @@ elForm.addEventListener("submit", (evt) => {
   async function fetchFilms() {
     const APIKey = "2b278381";
     const APISearch = elMoviesInput.value;
+    var APIPage = 1;
     const response = await fetch(
-      "http://www.omdbapi.com/?apikey=" + APIKey + "&s=" + APISearch
+      "http://www.omdbapi.com/?apikey=" +
+        APIKey +
+        "&s=" +
+        APISearch +
+        "&page=" +
+        APIPage
     );
 
     const data = await response.json();
     const filmArr = data.Search;
 
+    console.log(APIPage);
     const moviesInput = elMoviesInput.value.trim();
     const regex = new RegExp(moviesInput, "gi");
     const searchedFilms = filmArr.filter((film) => film.Title.match(regex));
@@ -48,6 +58,18 @@ elForm.addEventListener("submit", (evt) => {
 
   fetchFilms();
 });
+
+// elNextBtn.addEventListener("click", () => {
+//    APIPage = APIPage + 1;
+//   console.log("salom");
+//   fetchFilms();
+//  });
+// elPreBtn.addEventListener("click", () => {
+//   APIPage = APIPage - 1;
+//   if (APIPage <= 0) {
+//     APIPage = 1;
+//   }
+// });
 
 // Rendering genres
 

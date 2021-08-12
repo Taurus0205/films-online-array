@@ -38,6 +38,36 @@
     color: green;
   }
 }
+
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.page-wrapper {
+}
+.movies__btn {
+  margin-left: 5px;
+  padding: 5px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  background-color: #333;
+  box-shadow: 0 0 2px 2px #333;
+
+  &:hover {
+    background-color: white;
+    color: #333;
+  }
+}
+.pre-btn {
+}
+.next-btn {
+}
+
 .movies__list {
   @include reset-list;
   display: flex;
