@@ -114,13 +114,15 @@
   display: inline-block;
   font-weight: bold;
   color: blue;
-  margin-bottom: 15px;
 }
+
 .modal__genres-list {
   @include reset-list;
 }
 .modal__genres-item {
   font-weight: bold;
+  color: #333;
+  text-transform: capitalize;
 }
 
 .modal__close-btn {
