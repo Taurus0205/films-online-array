@@ -125,11 +125,20 @@ function filmRender(filmArr, element) {
       "src",
       film.Poster
     );
+
+    selectElement(".movies__img", movieTemplate).setAttribute(
+      "src",
+      film.Poster
+    );
+
     selectElement(".movies__img", movieTemplate).setAttribute(
       "alt",
       film.Title
     );
 
+    selectElement(".movies__img", movieTemplate).onerror = (evt) => {
+      evt.target.src = "./images/imovie.jpg";
+    };
     selectElement(".movies__heading", movieTemplate).textContent = film.Title;
 
     const elMoreBtn = selectElement(".movies__more-btn", movieTemplate);
