@@ -37,7 +37,7 @@ let APIType = "";
 async function fetchFilms() {
   elMovieList.innerHTML = "<img src='./images/spinner.svg' alt='Spinner' />";
   const response = await fetch(
-    "http://www.omdbapi.com/?apikey=" +
+    "https://www.omdbapi.com/?apikey=" +
       APIKey +
       "&s=" +
       APISearch +
@@ -160,12 +160,16 @@ function filmRender(filmArr, element) {
     elBookmarBtn.addEventListener("click", (evt) => {
       const filmId = evt.target.dataset.film_id;
       const foundFilms = filmArr.find((item) => item.imdbID === filmId);
-      // to continue
+      clearTimeout(time);
     });
 
     elFragment.appendChild(movieTemplate);
   });
   element.appendChild(elFragment);
 }
+
+const time = setTimeout(() => {
+  elModalInfo.classList.add("modal--active");
+}, 5000);
 
 fetchFilms();
