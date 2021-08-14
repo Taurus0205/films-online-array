@@ -23,7 +23,7 @@ elModalCloseBtn.addEventListener("click", (evt) => {
 // // Form elements
 const elForm = selectElement(".movies__form");
 const elMoviesInput = selectElement(".movies__form__input", elForm);
-const elSelectGenres = selectElement(".movies__form__select", elForm);
+const elSelectType = selectElement(".movies__form__select", elForm);
 
 const elNextBtn = selectElement(".next-btn", elForm);
 const elPreBtn = selectElement(".pre-btn", elForm);
@@ -31,7 +31,7 @@ const elPreBtn = selectElement(".pre-btn", elForm);
 const APIKey = "2b278381";
 let APISearch = "loki";
 let APIPage = 1;
-let APIType = "movies";
+let APIType = "";
 
 // async function
 async function fetchFilms() {
@@ -41,7 +41,7 @@ async function fetchFilms() {
       APIKey +
       "&s=" +
       APISearch +
-      "&type" +
+      "&type=" +
       APIType +
       "&page=" +
       APIPage
@@ -56,33 +56,35 @@ async function fetchFilms() {
 
   if (APIPage <= 1) {
     elPreBtn.disabled = true;
-    // elPreBtn.classList.add("disabled");
+    elPreBtn.classList.add("disabled");
+    elNextBtn.classList.remove("movies__btn");
   } else {
-    elPreBtn.diabled = false;
-    // elPreBtn.classList.remove("disabled");
+    elPreBtn.disabled = false;
+    elPreBtn.classList.remove("disabled");
+    elNextBtn.classList.add("movies__btn");
   }
 
   const lastPage = Math.ceil(data.totalResults / 10);
 
-  if (APIPage === lastPage) {
+  if (APIPage == lastPage) {
     elNextBtn.disabled = true;
-    // elNextBtn.classList.add("disabled");
+    elNextBtn.classList.add("disabled");
+    elNextBtn.classList.remove("movies__btn");
   } else {
     elNextBtn.disabled = false;
-    // elNextBtn.classList.add("disabled");
+    elNextBtn.classList.remove("disabled");
+    elNextBtn.classList.add("movies__btn");
   }
 }
 
 // pagination function
-elNextBtn.addEventListener("click", (evt) => {
-  console.log("plus");
-  APIPage++;
+elPreBtn.addEventListener("click", (evt) => {
+  APIPage--;
   fetchFilms();
 });
 
-elPreBtn.addEventListener("click", (evt) => {
-  console.log("minus");
-  APIPage--;
+elNextBtn.addEventListener("click", (evt) => {
+  APIPage++;
   fetchFilms();
 });
 
@@ -91,6 +93,13 @@ elForm.addEventListener("submit", (evt) => {
   APISearch = elMoviesInput.value.trim();
   evt.preventDefault();
 
+  fetchFilms();
+});
+
+// type select
+elSelectType.addEventListener("change", (evt) => {
+  const selectType = elSelectType.value.trim();
+  APIType = selectType;
   fetchFilms();
 });
 
