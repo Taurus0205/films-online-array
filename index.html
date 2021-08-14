@@ -29,19 +29,6 @@
             </select>
           </label>
 
-          <label class="movies__form__label">
-            Filter
-            <select
-              class="movies__form__select sort-films"
-              name="movies__genres"
-            >
-              <option value="a_z">A-Z</option>
-              <option value="z_a">Z-A</option>
-              <option value="old_new">old-new</option>
-              <option value="new_old">new-old</option>
-            </select>
-          </label>
-
           <div class="btn-wrapper">
             <button class="movies__form__btn" type="submit">Search</button>
 
@@ -72,12 +59,11 @@
 
           <h3 class="modal__heading">Avengers</h3>
 
-          <time class="modal__time" datetime="2021-10-10">2021-07-21</time>
+          <p class="modal__time">2021-07-21</p>
 
-          <ul class="modal__genres-list">
-            <li class="modal__genres-item">Action</li>
-            <li class="modal__genres-item">Comedy</li>
-          </ul>
+          <p class="modal__type"></p>
+
+          <p class="modal__imdb">1</p>
 
           <button class="modal__close-btn">Close</button>
         </li>
@@ -95,7 +81,6 @@
         />
 
         <h3 class="movies__heading">Avengers</h3>
-
         <button class="movies__more-btn">More</button>
       </li>
     </template>
