@@ -154,6 +154,15 @@ function filmRender(filmArr, element) {
       elModalType.textContent = "Type: " + foundFilms.Type.toUpperCase();
       elModalImdb.textContent = "IMDB: " + foundFilms.imdbID;
     });
+
+    const elBookmarBtn = selectElement(".movies__bookmark-btn", movieTemplate);
+    elBookmarBtn.dataset.film_id = film.imdbID;
+    elBookmarBtn.addEventListener("click", (evt) => {
+      const filmId = evt.target.dataset.film_id;
+      const foundFilms = filmArr.find((item) => item.imdbID === filmId);
+      // to continue
+    });
+
     elFragment.appendChild(movieTemplate);
   });
   element.appendChild(elFragment);

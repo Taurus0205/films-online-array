@@ -44,7 +44,27 @@
           </div>
         </div>
 
-        <ul class="movies__list"></ul>
+        <div class="movies-wrapper">
+          <div class="bookmark-wrapper">
+            <h2 class="bookmark-heading">Bookmarked films</h2>
+            <ul class="bookmark-list">
+              <li class="bookmark-item">
+                <h3 class="bookmark-title">Loki</h3>
+                <button class="bookmark-delete-btn" type="button">
+                  Remove
+                </button>
+              </li>
+
+              <li class="bookmark-item">
+                <h3 class="bookmark-title">Loki</h3>
+                <button class="bookmark-delete-btn" type="button">
+                  Remove
+                </button>
+              </li>
+            </ul>
+          </div>
+          <ul class="movies__list"></ul>
+        </div>
       </div>
     </section>
 
@@ -85,6 +105,14 @@
 
         <h3 class="movies__heading">Avengers</h3>
         <button class="movies__more-btn">More</button>
+        <button class="movies__bookmark-btn">Bookmark</button>
+      </li>
+    </template>
+
+    <template class="bookmark-template">
+      <li class="bookmark-item">
+        <h3 class="bookmark-title">Loki</h3>
+        <button class="bookmark-delete-btn" type="button">Remove</button>
       </li>
     </template>
     <script src="./js/utils.js"></script>
