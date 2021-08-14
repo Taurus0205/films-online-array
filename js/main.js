@@ -88,19 +88,28 @@ elNextBtn.addEventListener("click", (evt) => {
   fetchFilms();
 });
 
-// form submit
-elForm.addEventListener("submit", (evt) => {
-  APISearch = elMoviesInput.value.trim();
-  evt.preventDefault();
-
-  fetchFilms();
+// input change
+elMoviesInput.addEventListener("change", (evt) => {
+  const moviesInput = elMoviesInput.value.trim();
+  if (moviesInput === "") {
+    APISearch = "loki";
+    fetchFilms();
+  } else {
+    APISearch = moviesInput;
+    fetchFilms();
+  }
 });
 
 // type select
 elSelectType.addEventListener("change", (evt) => {
   const selectType = elSelectType.value.trim();
-  APIType = selectType;
-  fetchFilms();
+  if (selectType === "all") {
+    APIType = "";
+    fetchFilms();
+  } else {
+    APIType = selectType;
+    fetchFilms();
+  }
 });
 
 // Rendering films
