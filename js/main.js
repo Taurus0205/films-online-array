@@ -164,9 +164,6 @@ function filmRender(filmArr, element) {
   });
   element.appendChild(elFragment);
 
-  // bookmark Arr
-  let bookmarkArr = [];
-
   // bookmark
   elMovieList.addEventListener("click", (evt) => {
     if (evt.target.matches(".movies__bookmark-btn")) {
@@ -189,8 +186,10 @@ function filmRender(filmArr, element) {
   });
 }
 
-// render bookmarks
+// bookmark Arr
+let bookmarkArr = [];
 
+// render bookmarks
 function renderBookmark(bookmarkArr, element) {
   element.innerHTML = null;
 
@@ -207,16 +206,22 @@ function renderBookmark(bookmarkArr, element) {
     selectElement(".bookmark-title", bookmarkTemplate).textContent =
       bookmark.Title;
     bookmarkDeleteBtn.dataset.film_id = bookmark.imdbID;
+
+    bookmarkDeleteBtn.addEventListener("click", (evt) => {
+      const filmId = evt.target.dataset.film_id;
+      const foundFilms = bookmarkArr.find(
+        (bookmark) => bookmark.imdbID == filmId
+      );
+
+      bookmarkArr.splice(foundFilms, 1);
+      renderBookmark(bookmarkArr, elBookmarkList);
+    });
+
     bookmarkFragment.appendChild(bookmarkTemplate);
   });
+
   element.appendChild(bookmarkFragment);
 }
-
-elBookmarkList.addEventListener("click", (evt) => {
-  if (evt.target.matches(".bookmark-delete-btn")) {
-    evt.target.parentNode.remove();
-  }
-});
 
 fetchFilms();
 
