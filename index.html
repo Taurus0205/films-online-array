@@ -10,60 +10,115 @@
   <body>
     <section class="movies">
       <div class="container">
-        <h2 class="movies-heading">IMovie</h2>
-        <!-- form div ga o'zgartirildi. css ni o'zgartirmaslik uchun -->
-        <div class="movies__form">
-          <label class="movies__form__label">
-            Search
-            <input
-              class="movies__form__input"
-              type="search"
-              placeholder="Search..."
-            />
-          </label>
+        <div class="background-plot">
+          <ul class="slider-list">
+            <li class="slider-item">
+              <img
+                class="slider-img"
+                src="./images/avengers-endgame-review.jpg"
+                alt="movie-poster"
+                width="500"
+                height="200"
+              />
+            </li>
 
-          <label class="movies__form__label">
-            Search by types
-            <select class="movies__form__select" name="movies__genres">
-              <option value="all">All</option>
-              <option value="movie">movie</option>
-              <option value="series">series</option>
-              <option value="episode">episode</option>
-            </select>
-          </label>
+            <li class="slider-item">
+              <img
+                class="slider-img"
+                src="./images/I'm legend.jpg"
+                alt="movie-poster"
+                width="500"
+                height="200"
+              />
+            </li>
 
-          <div class="btn-wrapper">
-            <button class="movies__form__btn" type="submit">Search</button>
+            <li class="slider-item">
+              <img
+                class="slider-img"
+                src="./images/peaky-blinders.jpg"
+                alt="movie-poster"
+                width="500"
+                height="200"
+              />
+            </li>
 
-            <div class="page-wrapper">
-              <button class="movies__btn pre-btn" type="button">
-                Previous
-              </button>
-              <button class="movies__btn next-btn" type="button">Next</button>
+            <li class="slider-item">
+              <img
+                class="slider-img"
+                src="./images/spider-man-far-from-home-poster.jpg"
+                alt="movie-poster"
+                width="500"
+                height="200"
+              />
+            </li>
+
+            <li class="slider-item">
+              <img
+                class="slider-img"
+                src="./images/I robot.jpg"
+                alt="movie-poster"
+                width="500"
+                height="200"
+              />
+            </li>
+          </ul>
+        </div>
+        <div class="main-plot">
+          <h2 class="movies-heading">IMovie</h2>
+          <!-- form div ga o'zgartirildi. css ni o'zgartirmaslik uchun -->
+          <div class="movies__form">
+            <label class="movies__form__label">
+              Search
+              <input
+                class="movies__form__input"
+                type="search"
+                placeholder="Search..."
+              />
+            </label>
+
+            <label class="movies__form__label">
+              Search by types
+              <select class="movies__form__select" name="movies__genres">
+                <option value="all">All</option>
+                <option value="movie">movie</option>
+                <option value="series">series</option>
+                <option value="episode">episode</option>
+              </select>
+            </label>
+
+            <div class="btn-wrapper">
+              <button class="movies__form__btn" type="submit">Search</button>
+
+              <div class="page-wrapper">
+                <button class="movies__btn pre-btn" type="button">
+                  Previous
+                </button>
+                <button class="movies__btn next-btn" type="button">Next</button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="movies-wrapper">
-          <div class="bookmark-wrapper">
-            <h2 class="bookmark-heading">Bookmarked films</h2>
-            <ul class="bookmark-list">
-              <li class="bookmark-item">
-                <h3 class="bookmark-title">Loki</h3>
-                <button class="bookmark-delete-btn" type="button">
-                  Remove
-                </button>
-              </li>
+          <div class="movies-wrapper">
+            <div class="bookmark-wrapper">
+              <h2 class="bookmark-heading">Bookmarked films</h2>
+              <ul class="bookmark-list">
+                <li class="bookmark-item">
+                  <h3 class="bookmark-title">Loki</h3>
+                  <button class="bookmark-delete-btn" type="button">
+                    Remove
+                  </button>
+                </li>
 
-              <li class="bookmark-item">
-                <h3 class="bookmark-title">Loki</h3>
-                <button class="bookmark-delete-btn" type="button">
-                  Remove
-                </button>
-              </li>
-            </ul>
+                <li class="bookmark-item">
+                  <h3 class="bookmark-title">Loki</h3>
+                  <button class="bookmark-delete-btn" type="button">
+                    Remove
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <ul class="movies__list"></ul>
           </div>
-          <ul class="movies__list"></ul>
         </div>
       </div>
     </section>
@@ -105,7 +160,7 @@
 
         <h3 class="movies__heading">Avengers</h3>
         <button class="movies__more-btn">More</button>
-        <button class="movies__bookmark-btn">Stop Ad</button>
+        <button class="movies__bookmark-btn">Bookmark</button>
       </li>
     </template>
 
@@ -116,6 +171,7 @@
       </li>
     </template>
     <script src="./js/utils.js"></script>
+    <script src="./js/slider.js"></script>
     <!-- <script src="./js/films.js"></script> -->
     <script src="./js/main.js"></script>
   </body>

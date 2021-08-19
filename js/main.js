@@ -160,16 +160,30 @@ function filmRender(filmArr, element) {
     elBookmarBtn.addEventListener("click", (evt) => {
       const filmId = evt.target.dataset.film_id;
       const foundFilms = filmArr.find((item) => item.imdbID === filmId);
-      clearTimeout(time);
+      bookmarkArr.push(foundFilms);
+      console.log(bookmarkArr);
     });
 
     elFragment.appendChild(movieTemplate);
   });
   element.appendChild(elFragment);
 }
-
-const time = setTimeout(() => {
-  elModalInfo.classList.add("modal--active");
-}, 5000);
+let bookmarkArr = [];
 
 fetchFilms();
+
+// slider
+const slider = tns({
+  container: ".slider-list",
+  items: 1,
+  slideBy: 1,
+  swipeAngle: false,
+  autoplay: true,
+  mouseDrag: true,
+  controls: false,
+  nav: false,
+  gutter: 20,
+  autoplayButtonOutput: false,
+  speed: 600,
+  autoplayTimeout: 5000,
+});
