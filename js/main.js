@@ -1,5 +1,7 @@
 const elMovieList = selectElement(".movies__list");
+const elBookmarkList = selectElement(".bookmark-list");
 const elMovieTemplate = selectElement(".movie__template").content;
+const elBookmarkTemplate = selectElement(".bookmark-template").content;
 
 // // modal
 const elModalInfo = selectElement(".modal");
@@ -157,18 +159,64 @@ function filmRender(filmArr, element) {
 
     const elBookmarBtn = selectElement(".movies__bookmark-btn", movieTemplate);
     elBookmarBtn.dataset.film_id = film.imdbID;
-    elBookmarBtn.addEventListener("click", (evt) => {
-      const filmId = evt.target.dataset.film_id;
-      const foundFilms = filmArr.find((item) => item.imdbID === filmId);
-      bookmarkArr.push(foundFilms);
-      console.log(bookmarkArr);
-    });
 
     elFragment.appendChild(movieTemplate);
   });
   element.appendChild(elFragment);
+
+  // bookmark Arr
+  let bookmarkArr = [];
+
+  // bookmark
+  elMovieList.addEventListener("click", (evt) => {
+    if (evt.target.matches(".movies__bookmark-btn")) {
+      const filmId = evt.target.dataset.film_id;
+      const foundFilms = filmArr.find((film) => film.imdbID == filmId);
+
+      let doesExist = false;
+
+      bookmarkArr.forEach((row) => {
+        if (row.imdbID == filmId) {
+          doesExist = true;
+        }
+      });
+
+      if (!doesExist) {
+        bookmarkArr.push(foundFilms);
+        renderBookmark(bookmarkArr, elBookmarkList);
+      }
+    }
+  });
 }
-let bookmarkArr = [];
+
+// render bookmarks
+
+function renderBookmark(bookmarkArr, element) {
+  element.innerHTML = null;
+
+  const bookmarkFragment = document.createDocumentFragment();
+
+  bookmarkArr.forEach((bookmark) => {
+    const bookmarkTemplate = elBookmarkTemplate.cloneNode(true);
+
+    const bookmarkDeleteBtn = selectElement(
+      ".bookmark-delete-btn",
+      bookmarkTemplate
+    );
+
+    selectElement(".bookmark-title", bookmarkTemplate).textContent =
+      bookmark.Title;
+    bookmarkDeleteBtn.dataset.film_id = bookmark.imdbID;
+    bookmarkFragment.appendChild(bookmarkTemplate);
+  });
+  element.appendChild(bookmarkFragment);
+}
+
+elBookmarkList.addEventListener("click", (evt) => {
+  if (evt.target.matches(".bookmark-delete-btn")) {
+    evt.target.parentNode.remove();
+  }
+});
 
 fetchFilms();
 
